@@ -42,31 +42,37 @@
 '''
 import datetime
 
-
+user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД': ")
 
 def get_days_from_today(date) -> int:
     '''A function that calculates the number of days between a given date and the current date.'''
+    while True:
+        
+        try:
+            target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            today = datetime.date.today()
+
+            difference = today - target_date
+            return difference.days
+        
+        except ValueError:
+            print("Не корректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'.")
+            print("-" * 100) 
+            date = input("Спробуйте ще раз (РРРР-ММ-ДД): ")
+
+print("Різниця у днях складає: ", get_days_from_today(user_input))
+
 
     
-    try:
-        target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-        today = datetime.date.today()
-        difference = today - target_date
-        return difference.days
-    except ValueError:
-        return "Не корректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'."
-
-   
+# # Створюємо безкінечний цикл для введення даних
+# while True:
+#     user_input = input("Enter a date in 'YYYY-MM-DD' format: ")
+#     result = get_days_from_today(user_input)
     
-# Створюємо безкінечний цикл для введення даних
-while True:
-    user_input = input("Enter a date in 'YYYY-MM-DD' format: ")
-    result = get_days_from_today(user_input)
-    
-    # Перевіряємо, чи результат є числом (int)
-    if isinstance(result, int):
-        print(f"Різниця у днях: {result}")
-        break  
-    else:
-        print(result)
-        print("-" * 100) 
+#     # Перевіряємо, чи результат є числом (int)
+#     if isinstance(result, int):
+#         print(f"Різниця у днях: {result}")
+#         break  
+#     else:
+#         print(result)
+#         print("-" * 100) 
