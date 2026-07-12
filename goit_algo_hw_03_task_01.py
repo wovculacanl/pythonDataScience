@@ -42,15 +42,31 @@
 '''
 import datetime
 
+
+
 def get_days_from_today(date) -> int:
+    '''A function that calculates the number of days between a given date and the current date.'''
+
+    
     try:
         target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
         today = datetime.date.today()
-        difference = target_date - today
+        difference = today - target_date
         return difference.days
     except ValueError:
-        raise ValueError("Invalid date format. Please use 'YYYY-MM-DD' format.")
-    return get_days_from_today
+        return "Не корректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'."
 
-
-print(get_days_from_today("2026-10-09"))  # Example usage
+   
+    
+# Створюємо безкінечний цикл для введення даних
+while True:
+    user_input = input("Enter a date in 'YYYY-MM-DD' format: ")
+    result = get_days_from_today(user_input)
+    
+    # Перевіряємо, чи результат є числом (int)
+    if isinstance(result, int):
+        print(f"Різниця у днях: {result}")
+        break  
+    else:
+        print(result)
+        print("-" * 100) 
