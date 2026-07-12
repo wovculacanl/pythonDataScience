@@ -5,6 +5,8 @@ This repository contains a set of scripts completed as part of a hands-on projec
 ## Project structure
 
 - `task_01.py` — Calculate the number of days between a given date and the current date.
+- `task_02.py` — Calculate the number of days between a given date and the current date.
+
 
 
 ## Detailed task description
@@ -23,3 +25,21 @@ The script contains the function `get_days_from_today(date)`, which calculates t
 ```bash
 Введіть дату в форматі 'РРРР-ММ-ДД': 2021-05-05
 Різниця у днях складає: 1894
+
+### Task 2: Lottery ticket number generator (`task_02.py`)
+
+The script contains the function `get_numbers_ticket(min, max, quantity)`, which generates a set of unique random numbers for a lottery ticket within a specified range.
+
+**main characteristics:**
+* **Input data:** Three integers: `min` (minimum possible number, not less than 1), `max` (maximum possible number, not more than 1000), and `quantity` (amount of numbers to select).
+* **Output:** A sorted list of unique random integers. If the input parameters do not meet the specified constraints or are logically invalid, an empty list `[]` is returned.
+* **Error handling:** Built-in validation ensures that the parameters fall within the allowed limits and that the requested `quantity` does not exceed the available range `(max - min + 1)`.
+* **Modules used:** `random`.
+
+**Test usage of the function:**
+```python
+lottery_numbers = get_numbers_ticket(1, 36, 6)
+print("Ваші лотерейні числа:", lottery_numbers)
+
+Bash
+Ваші лотерейні числа: [4, 15, 23, 28, 37, 45]

@@ -1,8 +1,6 @@
 '''
 Друге завдання
 
-
-
 Щоб виграти головний приз лотереї, необхідний збіг кількох номерів на лотерейному квитку з числами, що випали випадковим чином і в певному діапазоні під час чергового тиражу. Наприклад, необхідно вгадати шість чисел від 1 до 49 чи п'ять чисел від 1 до 36 тощо.
 Вам необхідно написати функцію get_numbers_ticket(min, max, quantity), яка допоможе генерувати набір унікальних випадкових чисел для таких лотерей.
 Вона буде повертати випадковий набір чисел у межах заданих параметрів, причому всі випадкові числа в наборі повинні бути унікальні.
@@ -27,8 +25,6 @@
 
 Критерії оцінювання:
 
-
-
 Валідність вхідних даних: функція повинна перевіряти коректність параметрів.
 Унікальність результату: усі числа у видачі повинні бути унікальними.
 Відповідність вимогам: результат має бути у вигляді відсортованого списку.
@@ -36,8 +32,6 @@
 
 
 Приклад: Припустимо, вам потрібно вибрати 6 унікальних чисел для лотерейного квитка, де числа повинні бути у діапазоні від 1 до 49. Ви можете використати вашу функцію так:
-
-
 
 lottery_numbers = get_numbers_ticket(1, 49, 6)
 print("Ваші лотерейні числа:", lottery_numbers)
@@ -54,10 +48,10 @@ import random
 def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
 
     """
+    Validate input parameters and  return  empty list if parameters are invalid.
     Generates a set of unique random numbers for a lottery ticket.
     Returns: A sorted list of unique random numbers within the specified range.
-    Returns an empty list if parameters are invalid.
-
+   
     """
     
     # Validate input parameters
@@ -70,10 +64,10 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
     unique_numbers = set()
     while len(unique_numbers) < quantity:
         unique_numbers.add(random.randint(min, max))
-
-    # Return sorted list of unique numbers
-
     return sorted(unique_numbers)
 
-lottery_numbers = get_numbers_ticket(1, 36, 6)
+
+# Test usage of the function
+
+lottery_numbers = get_numbers_ticket(1, 49, 6)
 print("Ваші лотерейні числа:", lottery_numbers)
