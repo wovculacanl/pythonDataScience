@@ -15,8 +15,6 @@
 
 Рекомендації для виконання:
 
-
-
 1 - Імпортуйте модуль datetime.
 2 - Перетворіть рядок дати у форматі 'РРРР-ММ-ДД' у об'єкт datetime.
 3 - Отримайте поточну дату, використовуючи datetime.today().
@@ -26,17 +24,9 @@
 
 Критерії оцінювання:
 
-
-
 Коректність роботи функції: функція повинна точно обраховувати кількість днів між датами.
 Обробка винятків: функція має впоратися з неправильним форматом вхідних даних.
 Читабельність коду: код повинен бути чистим і добре документованим.
-
-Приклад:
-
-
-
-Якщо сьогодні 5 травня 2021 року, виклик get_days_from_today("2021-10-09") повинен повернути 157, оскільки 9 жовтня 2021 року є на 157 днів пізніше від 5 травня 2021 року.
 
 
 '''
@@ -44,35 +34,42 @@ import datetime
 
 user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД': ")
 
-def get_days_from_today(date) -> int:
-    '''A function that calculates the number of days between a given date and the current date.'''
-    while True:
+# --- Main function block ---
+
+def get_days_from_today(date: str) -> int | None:
+    '''
+    Calculates the number of days between a given date and the current date.
+    Returns an integer number of days, or None if the date format is invalid.
+
+    '''
+    try:
+
+        # Convert user input to a datetime.date object and calculate the difference in days
         
-        try:
-            target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            today = datetime.date.today()
-
-            difference = today - target_date
-            return difference.days
+        target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+        today = datetime.date.today()
+        difference = today - target_date  # According to the condition — if the given date is later than the current date, the result must be negative.
+        return difference.days
         
-        except ValueError:
-            print("Не корректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'.")
-            print("-" * 100) 
-            date = input("Спробуйте ще раз (РРРР-ММ-ДД): ")
+        # If the date format is invalid, a ValueError is raised, and the function returns None and the code continues execution
 
-print("Різниця у днях складає: ", get_days_from_today(user_input))
+    except ValueError:
+        return None 
 
+# --- User interaction block ---
 
+while True:
+
+    # To re-ask the user for the date if the date format is incorrect
+
+    result = get_days_from_today(user_input)
     
-# # Створюємо безкінечний цикл для введення даних
-# while True:
-#     user_input = input("Enter a date in 'YYYY-MM-DD' format: ")
-#     result = get_days_from_today(user_input)
-    
-#     # Перевіряємо, чи результат є числом (int)
-#     if isinstance(result, int):
-#         print(f"Різниця у днях: {result}")
-#         break  
-#     else:
-#         print(result)
-#         print("-" * 100) 
+    if result is not None:
+        print(f"Різниця у днях складає: {result}")
+        break
+    else:
+        print("Некоректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'.")
+        print("-" * 100)
+        user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД' щe раз: ")
+
+
