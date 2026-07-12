@@ -82,29 +82,32 @@ raw_numbers = [
 ]
 
 
-def phone_number_normalize(phone_number: str) -> str:
-    '''
-    Normalize phone numbers to a standard format, keeping only digits and the '+' symbol.
-    If the international code is missing, it adds the code '+38' (for Ukraine).
-    
-    Args:
-        phone_number (str): The input phone number in various
+def normalize_phone(phone_number: str) -> str:
+    """
+    Normalizes phone numbers to standard format, leaving only digits and the '+' symbol.
+    If the international code is missing, adds the code '+38'.
 
-    '''
-    for number in raw_numbers:
+    """
+
     # Remove all characters except digits and '+'
-       sanitized_numbers = re.sub(r'[^0-9+]', '', phone_number)
-    
-    # Check if the number starts with '+', if not, add '+38'
-    if not sanitized_numbers.startswith('+'):
-        if sanitized_numbers.startswith('380'):
-            sanitized_numbers = '+' + sanitized_numbers
-        else:
-            sanitized_numbers = '+38' + sanitized_numbers
-    
-    return sanitized_numbers
 
-sanitized_numbers = [phone_number_normalize(num) for num in raw_numbers]
+    sanitized_number = re.sub(r'[^0-9+]', '', phone_number)
+    
+    # Check if the number starts with '+', and fix the prefix
+
+    if not sanitized_number.startswith('+'):
+        if sanitized_number.startswith('380'):
+            sanitized_number = '+' + sanitized_number
+        else:
+            sanitized_number = '+38' + sanitized_number
+            
+    return sanitized_number
+
+
+# Loop through the list of numbers, passing one number at a time to the function
+
+sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
+
 
 print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
    
