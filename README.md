@@ -25,7 +25,7 @@ The script contains the function `get_days_from_today(date)`, which calculates t
 ```bash
 Введіть дату в форматі 'РРРР-ММ-ДД': 2021-05-05
 Різниця у днях складає: 1894
-
+```
 
 
 
@@ -42,7 +42,7 @@ The script contains the function `get_numbers_ticket(min, max, quantity)`, which
 ```python
 lottery_numbers = get_numbers_ticket(1, 36, 6)
 print("Ваші лотерейні числа:", lottery_numbers)
-
+```
 ```bash
 Ваші лотерейні числа: [4, 15, 23, 28, 37, 45]
-
+``
