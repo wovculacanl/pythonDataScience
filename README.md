@@ -4,12 +4,12 @@ This repository contains a set of scripts completed as part of a hands-on projec
 
 ## Project structure
 
-- `goit_algo_hw_03_task_01.py` — Calculate the number of days between a given date and the current date.
+- `task_01.py` — Calculate the number of days between a given date and the current date.
 
 
 ## Detailed task description
 
-### Task 1: Calculating days from a given date (`goit_algo_hw_03_task_01.py`)
+### Task 1: Calculating days from a given date (`task_01.py`)
 
 The script contains the function `get_days_from_today(date)`, which calculates the number of days between the user-entered date and today.
 
