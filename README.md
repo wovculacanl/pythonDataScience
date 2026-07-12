@@ -46,3 +46,32 @@ print("Ваші лотерейні числа:", lottery_numbers)
 ```bash
 Ваші лотерейні числа: [4, 15, 23, 28, 37, 45]
 ```
+
+### Task 3: Normalizing phone numbers (`task_03.py`)
+
+The script contains the function `normalize_phone(phone_number)`, which sanitizes and normalizes phone numbers from various formats into a standard format required for SMS campaigns.
+
+**Main characteristics:**
+* **Input data:** A string representing a phone number in any format (e.g., `"    +38(050)123-32-34"` or `"0503451234"`).
+* **Output:** A string containing the normalized phone number, consisting only of digits and a `+` symbol at the beginning. The standard international code `+38` (for Ukraine) is automatically added if missing.
+* **Data processing:** The function utilizes the `re` (regular expressions) module to efficiently strip out all irrelevant characters such as spaces, hyphens, brackets, and invisible whitespace (like `\t` or `\n`).
+* **Modules used:** `re`.
+
+**Example of use:**
+```python
+raw_number = "067\\t123 4567",
+    "(095) 234-5678\\n",
+    "+380 44 123 4567",
+    "380501234567",
+    "    +38(050)123-32-34",
+    "     0503451234",
+    "(050)8889900",
+    "38050-111-22-22",
+    "38050 111 22 11   "
+sanitized_number = normalize_phone(raw_number)
+print(sanitized_number)
+```
+
+```bash
+Нормалізовані номери телефонів для SMS-розсилки: ['+380671234567', '+380952345678', '+380441234567', '+380501234567', '+380501233234', '+380503451234', '+380508889900', '+380501112222', '+380501112211']
+```
