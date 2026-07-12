@@ -6,7 +6,7 @@ This repository contains a set of scripts completed as part of a hands-on projec
 
 - `task_01.py` — Calculate the number of days between a given date and the current date.
 - `task_02.py` — Calculate the number of days between a given date and the current date.
-
+- `task_03.py` - Normalizing phone numbers.
 
 
 ## Detailed task description
