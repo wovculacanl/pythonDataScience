@@ -54,20 +54,19 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
    
     """
     
-    # Validate input parameters
+    # Validate input parameters and check types
+    if not (isinstance(min, int) and isinstance(max, int) and isinstance(quantity, int)):
+        return []
 
     if min < 1 or max > 1000 or quantity < 1 or quantity > (max - min + 1):
         return []
 
-    # Generate unique random numbers
-
-    unique_numbers = set()
-    while len(unique_numbers) < quantity:
-        unique_numbers.add(random.randint(min, max))
-    return sorted(unique_numbers)
+    # Generate unique random numbers using random.sample for O(quantity) performance
+    return sorted(random.sample(range(min, max + 1), quantity))
 
 
 # Test usage of the function
 
-lottery_numbers = get_numbers_ticket(1, 49, 6)
-print("Ваші лотерейні числа:", lottery_numbers)
+if __name__ == "__main__":
+    lottery_numbers = get_numbers_ticket(1, 49, 6)
+    print("Ваші лотерейні числа:", lottery_numbers)

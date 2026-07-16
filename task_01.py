@@ -32,9 +32,6 @@
 '''
 import datetime
 
-user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД': ")
-
-# --- Main function block ---
 
 def get_days_from_today(date: str) -> int | None:
     '''
@@ -46,7 +43,7 @@ def get_days_from_today(date: str) -> int | None:
 
         # Convert user input to a datetime.date object and calculate the difference in days
         
-        target_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+        target_date = datetime.datetime.strptime(date.strip(), '%Y-%m-%d').date()
         today = datetime.date.today()
         difference = today - target_date  # According to the condition — if the given date is later than the current date, the result must be negative.
         return difference.days
@@ -56,20 +53,25 @@ def get_days_from_today(date: str) -> int | None:
     except ValueError:
         return None 
 
+
 # --- User interaction block ---
 
-while True:
+if __name__ == "__main__":
+    user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД': ")
 
-    # To re-ask the user for the date if the date format is incorrect
+    while True:
 
-    result = get_days_from_today(user_input)
-    
-    if result is not None:
-        print(f"Різниця у днях складає: {result}")
-        break
-    else:
-        print("Некоректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'.")
-        print("-" * 100)
-        user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД' щe раз: ")
+        # To re-ask the user for the date if the date format is incorrect
+
+        result = get_days_from_today(user_input)
+        
+        if result is not None:
+            print(f"Різниця у днях складає: {result}")
+            break
+        else:
+            print("Некоректний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'.")
+            print("-" * 100)
+            user_input = input("Введіть дату в форматі 'РРРР-ММ-ДД' щe раз: ")
+
 
 

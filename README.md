@@ -5,7 +5,7 @@ This repository contains a set of scripts completed as part of a hands-on projec
 ## Project structure
 
 - `task_01.py` — Calculate the number of days between a given date and the current date.
-- `task_02.py` — Calculate the number of days between a given date and the current date.
+- `task_02.py` — Lottery ticket number generator.
 - `task_03.py` - Normalizing phone numbers.
 
 
@@ -59,8 +59,9 @@ The script contains the function `normalize_phone(phone_number)`, which sanitize
 
 **Example of use:**
 ```python
-raw_number = "067\\t123 4567",
-    "(095) 234-5678\\n",
+raw_numbers = [
+    "067\t123 4567",
+    "(095) 234-5678\n",
     "+380 44 123 4567",
     "380501234567",
     "    +38(050)123-32-34",
@@ -68,8 +69,9 @@ raw_number = "067\\t123 4567",
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   "
-sanitized_number = normalize_phone(raw_number)
-print(sanitized_number)
+]
+sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
+print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
 ```
 
 ```bash
